@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>سکته قلبی را بشناسیم</title>
+
+<style>@font-face{font-family:Vazirmatn;font-display:swap;src:url(fonts/vazirmatn-arabic-400-normal.woff2) format("woff2")}@font-face{font-family:Vazirmatn;font-weight:700;font-display:swap;src:url(fonts/vazirmatn-arabic-700-normal.woff2) format("woff2")}@font-face{font-family:Vazirmatn;font-weight:900;font-display:swap;src:url(fonts/vazirmatn-arabic-900-normal.woff2) format("woff2")}@font-face{font-family:Vazirmatn;font-display:swap;src:url(fonts/vazirmatn-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF}@font-face{font-family:Vazirmatn;font-weight:700;font-display:swap;src:url(fonts/vazirmatn-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF}</style>
+<style>
+/* VOICE: calm, clear, urgent only where it matters — a health-education poster
+   IDEA: an ECG strip / emergency card: the heartbeat line runs through the page
+   PICTURE: a large drawn heart with a blocked coronary artery and live ECG trace
+   COLOUR and TYPE: blood red field, white panels, warm pink support; Vazirmatn
+   LAYOUT: full-bleed red hero, then white bands; steps as a big numbered card list */
+:root{color-scheme:light dark;
+--bg:light-dark(#fff,#140709);--ink:light-dark(#1d0b0e,#f7e9eb);--mute:light-dark(#6b5458,#c5a9ae);
+--red:#c8102e;--deep:light-dark(#8d0a20,#5c0614);--pink:light-dark(#fde8eb,#2a0e13);--line:light-dark(#f1d3d8,#3a1820);--card:light-dark(#fff,#1d0b0f);--gold:#ffc94a}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.85 Vazirmatn,Tahoma,sans-serif;overflow-x:clip}
+a{color:inherit}
+.band{padding:clamp(36px,5vw,72px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1,h2,h3{line-height:1.25;text-wrap:balance;margin:0 0 .5em}
+h2{font-size:clamp(28px,3.6vw,42px);font-weight:900}
+h3{font-size:20px;font-weight:700}
+p{margin:0 0 1em;max-width:68ch}
+.lead{color:var(--mute);font-size:18px}
+nav{position:sticky;top:0;z-index:5;background:var(--deep);color:#fff}
+nav .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;padding:8px max(5vw,16px);max-width:none}
+nav b{margin-inline-end:auto;white-space:nowrap;font-weight:900;display:flex;align-items:center;gap:8px}
+nav a{flex:none;text-decoration:none;padding:8px 12px;border-radius:99px;font-size:15px;min-height:40px;display:flex;align-items:center}
+nav a:hover,nav a:focus-visible{background:#ffffff22;outline:none}
+.hero{background:radial-gradient(circle at 25% 40%,#e0213f,var(--red) 40%,#7a0718);color:#fff;padding-bottom:0}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;align-items:center}
+.hero h1{font-size:clamp(36px,5.4vw,60px);font-weight:900}
+.hero p{font-size:19px;color:#ffe3e7}
+.call{display:inline-flex;gap:14px;align-items:center;background:#fff;color:var(--red);padding:14px 22px;border-radius:18px;font-weight:900;font-size:20px;box-shadow:0 10px 30px #0004;margin:6px 0 22px}
+.call span{font-size:34px;direction:ltr}
+.call small{display:block;font-weight:500;font-size:13px;color:#6b5458}
+.fig{position:relative;min-height:380px}
+.fig svg{width:100%;height:100%;display:block}
+.ecg{display:block;width:100%;height:70px;margin-top:10px}
+.ecg path{stroke:#fff;stroke-width:3;fill:none;stroke-dasharray:1400;animation:run 3s linear infinite}
+@keyframes run{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+.beat{transform-origin:200px 210px;animation:beat 1.1s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.05)}24%{transform:scale(.99)}36%{transform:scale(1.03)}}
+@media(prefers-reduced-motion:reduce){.beat,.ecg path{animation:none}}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+.stat{background:var(--pink);border-radius:20px;padding:20px}
+.stat b{display:block;font-size:clamp(30px,4vw,44px);color:var(--red);font-weight:900;line-height:1.2}
+.stat span{color:var(--mute);font-size:15px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.artery{background:var(--pink);border-radius:24px;padding:18px}
+.stage{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.stage button,.btn{font:inherit;font-size:15px;min-height:44px;padding:8px 16px;border-radius:99px;border:2px solid var(--red);background:transparent;color:var(--ink);cursor:pointer}
+.stage button[aria-pressed=true],.btn.pri{background:var(--red);color:#fff}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cap{font-size:15px;color:var(--mute);margin-top:10px;min-height:3.4em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px;margin-top:24px}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:22px}
+.card p{font-size:15.5px;color:var(--mute);margin:0}
+.ico{width:46px;height:46px;border-radius:14px;background:var(--pink);display:grid;place-items:center;margin-bottom:10px}
+.ico svg{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.note{background:var(--pink);border-inline-start:5px solid var(--red);padding:16px 20px;border-radius:12px;margin-top:22px;font-size:16px}
+.emer{background:var(--deep);color:#fff}
+.emer .lead{color:#ffd5db}
+.steps{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;background:#ffffff12;border-radius:20px;padding:18px}
+.steps li::before{content:counter(s,persian);font-size:34px;font-weight:900;background:#fff;color:var(--red);border-radius:16px;display:grid;place-items:center;height:64px}
+.steps p{margin:0;color:#ffe3e7;font-size:16px}
+.cpr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;background:#fff;color:#1d0b0e;border-radius:24px;padding:22px;margin-top:22px}
+.cpr p{color:#6b5458;margin:0}
+.metro{width:120px;height:120px;border-radius:50%;background:var(--red);color:#fff;border:0;font:900 18px Vazirmatn,sans-serif;cursor:pointer;box-shadow:0 0 0 0 #c8102e66}
+.metro.on{animation:pulse .545s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #c8102e88;transform:scale(1)}20%{transform:scale(.93)}100%{box-shadow:0 0 0 22px #c8102e00;transform:scale(1)}}
+.risk{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;margin-top:24px;align-items:start}
+.chk{display:grid;gap:10px}
+.chk label{display:flex;gap:12px;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;cursor:pointer;min-height:52px}
+.chk input{width:22px;height:22px;accent-color:var(--red);flex:none}
+.meter{background:var(--pink);border-radius:24px;padding:24px;position:sticky;top:80px}
+.meter b{font-size:56px;color:var(--red);font-weight:900;line-height:1}
+.bar{height:14px;background:var(--line);border-radius:99px;overflow:hidden;margin:14px 0}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffb347,var(--red));transition:width .4s;margin-inline-start:0}
+.myths{display:grid;gap:12px;margin-top:24px}
+details{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:4px 20px}
+summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;gap:12px;align-items:center}
+summary::before{content:"افسانه";background:var(--red);color:#fff;font-size:13px;padding:2px 10px;border-radius:99px;flex:none}
+details p{color:var(--mute);font-size:16px}
+details p::before{content:"واقعیت: ";color:var(--red);font-weight:700}
+.quiz{background:var(--pink);border-radius:24px;padding:clamp(20px,3vw,36px);margin-top:24px;max-width:760px}
+.opts{display:grid;gap:10px;margin:16px 0}
+.opts button{font:inherit;text-align:start;padding:12px 18px;border-radius:14px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-height:52px}
+.opts button.ok{border-color:#1b8a4a;background:light-dark(#e3f6ea,#0f2a1a)}
+.opts button.no{border-color:var(--red)}
+.fb{min-height:1.8em;font-size:15.5px}
+footer{background:#1d0b0e;color:#e8cfd3;font-size:15px}
+footer a{color:#fff}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px}
+@media(max-width:860px){.hero .wrap,.two,.risk,footer .wrap{grid-template-columns:minmax(0,1fr)}.meter{position:static}.fig{min-height:300px}}
+@media(max-width:600px){.stats{grid-template-columns:minmax(0,1fr)}.cpr{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}.steps li{grid-template-columns:48px minmax(0,1fr)}.steps li::before{height:48px;font-size:26px}body{font-size:16px}}
+</style>
+</head>
+<body>
+<nav aria-label="بخش‌ها"><div class="wrap">
+<b><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 21s-7.5-4.6-9.5-9.3C1 8 3.3 4.5 6.8 4.5c2 0 3.5 1.1 5.2 3 1.7-1.9 3.2-3 5.2-3 3.5 0 5.8 3.5 4.3 7.2C19.5 16.4 12 21 12 21z"/></svg>قلب سالم</b>
+<a href="#what">سکته چیست؟</a><a href="#signs">علائم</a><a href="#act">چه کنیم؟</a><a href="#risk">عوامل خطر</a><a href="#prevent">پیشگیری</a><a href="#myth">افسانه‌ها</a><a href="#quiz">آزمونک</a>
+</div></nav>
+
+<header class="band hero"><div class="wrap">
+<div>
+<h1>هر دقیقه برای قلب مهم است</h1>
+<p>سکته قلبی یعنی بخشی از عضله قلب به‌خاطر بسته شدن رگ، خون و اکسیژن کافی نمی‌گیرد. شناختن علائم و اقدام سریع می‌تواند جان یک نفر را نجات دهد.</p>
+<div class="call">☎<div>تماس فوری با اورژانس<small>ایران ۱۱۵ · اروپا ۱۱۲</small></div><span>115</span></div>
+</div>
+<div class="fig" aria-label="تصویر قلب و رگ کرونری بسته‌شده">
+<svg viewBox="0 0 400 400" role="img" style="direction:ltr">
+<defs>
+<radialGradient id="hg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ff6b80"/><stop offset=".55" stop-color="#e02443"/><stop offset="1" stop-color="#8d0a20"/></radialGradient>
+<radialGradient id="dead" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#4a0610"/><stop offset="1" stop-color="#4a0610" stop-opacity="0"/></radialGradient>
+</defs>
+<ellipse cx="200" cy="370" rx="130" ry="14" fill="#00000033"/>
+<g class="beat">
+<path d="M150 70 C150 40 175 30 190 40 L190 95 M215 95 L215 30 C230 20 260 30 255 60" stroke="#f2a7b1" stroke-width="26" fill="none" stroke-linecap="round"/>
+<path d="M200 345 C120 300 55 240 60 165 C64 110 110 80 155 92 C180 98 195 112 200 125 C210 105 235 90 265 92 C320 96 348 140 340 190 C330 255 270 305 200 345Z" fill="url(#hg)"/>
+<path d="M95 150 C110 115 140 104 165 110" stroke="#ffffff55" stroke-width="8" fill="none" stroke-linecap="round"/>
+<ellipse cx="265" cy="245" rx="55" ry="45" fill="url(#dead)" opacity=".85"/>
+<path d="M200 130 C215 170 240 190 262 215 M240 140 C270 160 300 175 310 205 M200 130 C170 180 140 220 130 260" stroke="#ffd36b" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M262 215 C275 232 280 250 282 270" stroke="#ffd36b" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="3 9" opacity=".6"/>
+<circle cx="262" cy="215" r="13" fill="#fff"/><path d="M256 209l12 12M268 209l-12 12" stroke="#c8102e" stroke-width="4" stroke-linecap="round"/>
+</g>
+<g font-family="Vazirmatn" font-size="15" fill="#fff" font-weight="700">
+<text x="384" y="226" text-anchor="end">لخته</text>
+<text x="20" y="60">رگ‌های کرونری</text>
+<path d="M90 68 Q130 90 170 160" stroke="#fff" stroke-width="1.5" fill="none" opacity=".7"/>
+<text x="330" y="318" text-anchor="middle" font-size="13" fill="#ffd5db">عضله آسیب‌دیده</text>
+</g>
+</svg>
+</div>
+</div>
+<svg class="ecg" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 H220 l15 -6 l15 6 H300 l10 12 l18 -50 l18 62 l12 -24 H520 l15 -6 l15 6 H600 l10 12 l18 -50 l18 62 l12 -24 H820 l15 -6 l15 6 H900 l10 12 l18 -50 l18 62 l12 -24 H1200"/></svg>
+</header>
+
+<section class="band" id="what"><div class="wrap">
+<div class="two">
+<div>
+<h2>سکته قلبی چطور اتفاق می‌افتد؟</h2>
+<p class="lead">قلب هم مثل هر عضو دیگری به خون نیاز دارد. این خون را رگ‌های کوچکی به نام «رگ‌های کرونری» می‌رسانند.</p>
+<p>با گذشت سال‌ها چربی، کلسترول و مواد دیگر در دیواره این رگ‌ها جمع می‌شود و «پلاک» می‌سازد. اگر یک پلاک ترک بخورد، بدن روی آن لخته خون می‌سازد. این لخته می‌تواند رگ را کاملاً ببندد. بخشی از قلب که پشت این انسداد است اکسیژن نمی‌گیرد و اگر زود درمان نشود، آن بافت از بین می‌رود.</p>
+<p>به همین خاطر پزشکان می‌گویند: <b>«زمان یعنی عضله»</b>. هرچه رگ زودتر باز شود، قلب کمتر آسیب می‌بیند.</p>
+</div>
+<div class="artery">
+<svg id="art" style="direction:ltr" viewBox="0 0 400 200" role="img" aria-label="مراحل بسته شدن رگ"></svg>
+<div class="stage" role="group" aria-label="مرحله">
+<button data-s="0" aria-pressed="true">رگ سالم</button><button data-s="1" aria-pressed="false">تشکیل پلاک</button><button data-s="2" aria-pressed="false">ترک و لخته</button>
+</div>
+<p class="cap" id="cap"></p>
+</div>
+</div>
+<div class="stats">
+<div class="stat"><b>شماره ۱</b><span>بیماری‌های قلبی‌عروقی، عامل اصلی مرگ در جهان (طبق سازمان جهانی بهداشت)</span></div>
+<div class="stat"><b>۹۰ دقیقه</b><span>هدف بیمارستان‌ها برای باز کردن رگ بسته پس از رسیدن بیمار</span></div>
+<div class="stat"><b>تا ۸۰٪</b><span>از بیماری‌های زودرس قلبی با سبک زندگی سالم قابل پیشگیری است</span></div>
+</div>
+</div></section>
+
+<section class="band" id="signs" style="background:var(--pink)"><div class="wrap">
+<h2>علائم هشداردهنده</h2>
+<p class="lead">علائم همیشه مثل فیلم‌ها ناگهانی و شدید نیستند. گاهی آرام شروع می‌شوند.</p>
+<div class="grid" id="signGrid"></div>
+<div class="note"><b>در زنان، سالمندان و افراد دیابتی</b> علائم ممکن است متفاوت باشد: تنگی نفس، تهوع، خستگی شدید یا درد پشت و فک، حتی بدون درد واضح قفسه سینه. این علائم را جدی بگیرید.</div>
+</div></section>
+
+<section class="band emer" id="act"><div class="wrap">
+<h2>اگر کسی دچار سکته قلبی شد، چه کنیم؟</h2>
+<p class="lead">این کارها را به ترتیب انجام دهید. منتظر نمانید که «خودش خوب شود».</p>
+<ol class="steps">
+<li><div><h3>فوراً با اورژانس تماس بگیرید</h3><p>در ایران ۱۱۵ و در اروپا ۱۱۲. خود بیمار را با ماشین شخصی جابه‌جا نکنید؛ آمبولانس می‌تواند درمان را در راه شروع کند.</p></div></li>
+<li><div><h3>بیمار را آرام بنشانید</h3><p>بگذارید در حالت نیمه‌نشسته استراحت کند، لباس‌های تنگ را شل کنید و از هرگونه فعالیت جلوگیری کنید.</p></div></li>
+<li><div><h3>درباره آسپرین از اورژانس بپرسید</h3><p>اگر بیمار حساسیت ندارد، اپراتور اورژانس ممکن است بگوید یک قرص آسپرین را بجود. فقط طبق توصیه کادر درمان.</p></div></li>
+<li><div><h3>اگر بیهوش شد و نفس نمی‌کشد، احیا (CPR) را شروع کنید</h3><p>وسط قفسه سینه را محکم و سریع فشار دهید و اگر دستگاه شوک (AED) در دسترس است، از آن استفاده کنید.</p></div></li>
+</ol>
+<div class="cpr">
+<div><h3>ریتم احیا را تمرین کنید</h3><p>۱۰۰ تا ۱۲۰ فشار در دقیقه، به عمق حدود ۵ تا ۶ سانتی‌متر. دکمه را بزنید تا ریتم درست را ببینید و بشنوید.</p></div>
+<button class="metro" id="metro" aria-pressed="false">شروع</button>
+</div>
+</div></section>
+
+<section class="band" id="risk"><div class="wrap">
+<h2>عوامل خطر را بشناسید</h2>
+<p class="lead">هرچه عوامل خطر بیشتری داشته باشید، احتمال بیماری قلبی بیشتر است. گزینه‌هایی را که درباره شما (یا یکی از اعضای خانواده) صدق می‌کند علامت بزنید.</p>
+<div class="risk">
+<div class="chk" id="chk"></div>
+<div class="meter" aria-live="polite">
+<span>تعداد عوامل خطر</span><br><b id="cnt">۰</b>
+<div class="bar"><i id="fill"></i></div>
+<p id="msg" style="margin:0"></p>
+<p style="font-size:13px;color:var(--mute);margin-top:12px">این فقط یک ابزار آموزشی است و جای معاینه پزشک را نمی‌گیرد.</p>
+</div>
+</div>
+</div></section>
+
+<section class="band" id="prevent" style="background:var(--pink)"><div class="wrap">
+<h2>چطور از قلبمان مراقبت کنیم؟</h2>
+<div class="grid" id="prevGrid"></div>
+</div></section>
+
+<section class="band" id="myth"><div class="wrap">
+<h2>افسانه یا واقعیت؟</h2>
+<div class="myths" id="myths"></div>
+</div></section>
+
+<section class="band" id="quiz" style="background:var(--bg);padding-top:0"><div class="wrap">
+<h2>آزمونک: چقدر یاد گرفتید؟</h2>
+<div class="quiz"><div id="qbox"></div></div>
+</div></section>
+
+<footer class="band"><div class="wrap">
+<div><h3 style="color:#fff">قلب سالم</h3><p>این وب‌سایت برای یک پروژه آموزشی مدرسه ساخته شده و جایگزین مشاوره پزشکی نیست. در صورت بروز علائم، بلافاصله با اورژانس تماس بگیرید.</p></div>
+<div><h3 style="color:#fff">منابع</h3>
+<a href="https://www.who.int/health-topics/cardiovascular-diseases">سازمان جهانی بهداشت (WHO)</a><br>
+<a href="https://www.heart.org/en/health-topics/heart-attack">انجمن قلب آمریکا (AHA)</a><br>
+<a href="https://www.nhs.uk/conditions/heart-attack/">سرویس سلامت بریتانیا (NHS)</a></div>
+</div></footer>
+
+<script>
+{
+const ic={pain:'<path d="M12 21s-7-4.5-9-9C1.5 8 4 5 7 5c2 0 3.5 1 5 3 1.5-2 3-3 5-3 3 0 5.5 3 4 7-2 4.5-9 9-9 9z"/><path d="M12 8l-2 4h4l-2 4"/>',arm:'<path d="M6 3v6l4 4v8M14 13l4-4V3"/>',breath:'<path d="M3 8h12a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8"/>',sweat:'<path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/>',sick:'<circle cx="12" cy="12" r="9"/><path d="M8 15s1.5-2 4-2 4 2 4 2M9 9h.01M15 9h.01"/>',dizzy:'<path d="M12 3a9 9 0 1 0 9 9M12 7a5 5 0 1 0 5 5M12 11a1 1 0 1 0 1 1"/>',walk:'<circle cx="13" cy="4" r="2"/><path d="M9 21l3-7 3 3v4M7 12l3-4 4 1 3 3"/>',food:'<path d="M5 3v8a3 3 0 0 0 6 0V3M8 11v10M17 3c-2 2-2 6 0 8v10"/>',smoke:'<path d="M3 15h14v3H3zM20 15v3M17 11c0-2 2-2 2-4s-2-2-2-4"/><path d="M3 4l18 18"/>',bed:'<path d="M3 18V6M3 13h18v5M7 13V9h7a4 4 0 0 1 4 4"/>',scale:'<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 9a5 5 0 0 1 8 0l-4 3"/>',calm:'<circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>'};
+const svg=k=>`<div class="ico"><svg viewBox="0 0 24 24">${ic[k]}</svg></div>`;
+const signs=[['pain','درد یا فشار قفسه سینه','احساس فشار، سنگینی یا سوزش در وسط سینه که بیش از چند دقیقه طول می‌کشد یا می‌رود و برمی‌گردد.'],['arm','درد در بازو، گردن، فک یا پشت','درد ممکن است به یک یا هر دو بازو (بیشتر چپ)، گردن، فک، پشت یا بالای شکم پخش شود.'],['breath','تنگی نفس','احساس کمبود هوا، چه همراه درد سینه و چه بدون آن.'],['sweat','عرق سرد','عرق کردن ناگهانی و سرد بدون دلیل مشخص.'],['sick','تهوع یا استفراغ','گاهی با سوءهاضمه اشتباه گرفته می‌شود.'],['dizzy','سرگیجه و ضعف ناگهانی','احساس سبکی سر، ضعف شدید یا حتی از هوش رفتن.']];
+document.getElementById('signGrid').innerHTML=signs.map(s=>`<div class="card">${svg(s[0])}<h3>${s[1]}</h3><p>${s[2]}</p></div>`).join('');
+const prev=[['walk','تحرک روزانه','حداقل ۱۵۰ دقیقه ورزش متوسط در هفته؛ مثلاً ۳۰ دقیقه پیاده‌روی تند در پنج روز.'],['food','غذای سالم','میوه، سبزی، حبوبات و غلات کامل بیشتر؛ نمک، قند، غذای سرخ‌کردنی و فست‌فود کمتر.'],['smoke','دوری از سیگار و قلیان','دخانیات رگ‌ها را آسیب می‌زند. ترک آن در هر سنی خطر را به‌سرعت کم می‌کند.'],['bed','خواب کافی','نوجوانان ۸ تا ۱۰ ساعت و بزرگسالان ۷ تا ۹ ساعت خواب شبانه نیاز دارند.'],['scale','چکاپ منظم','فشار خون، قند و چربی خون را به‌طور منظم اندازه بگیرید؛ این‌ها اغلب بی‌صدا هستند.'],['calm','مدیریت استرس','ورزش، وقت گذراندن با دوستان و تنفس عمیق به آرامش قلب کمک می‌کند.']];
+document.getElementById('prevGrid').innerHTML=prev.map(s=>`<div class="card">${svg(s[0])}<h3>${s[1]}</h3><p>${s[2]}</p></div>`).join('');
+const risks=['سیگار یا قلیان می‌کشم','فشار خون بالا دارم','دیابت (قند خون بالا) دارم','کلسترول یا چربی خونم بالاست','اضافه‌وزن زیادی دارم','کمتر از ۳ روز در هفته ورزش می‌کنم','زیاد فست‌فود و غذای شور می‌خورم','پدر، مادر یا خواهر و برادرم زود دچار بیماری قلبی شده‌اند','بیشتر وقت‌ها استرس زیادی دارم','بالای ۵۵ سال سن دارم'];
+const fa=n=>n.toLocaleString('fa-IR');
+const chk=document.getElementById('chk');
+chk.innerHTML=risks.map((r,i)=>`<label><input type="checkbox" id="r${i}">${r}</label>`).join('');
+const upd=()=>{const n=chk.querySelectorAll('input:checked').length;document.getElementById('cnt').textContent=fa(n);document.getElementById('fill').style.width=(n/risks.length*100)+'%';document.getElementById('msg').textContent=n===0?'عالی! هیچ عامل خطری انتخاب نشده. همین سبک زندگی را ادامه دهید.':n<=2?'چند عامل خطر دارید. بیشتر آن‌ها با تغییر عادت‌ها قابل کنترل‌اند.':n<=4?'عوامل خطر قابل توجهی دارید. بهتر است با پزشک درباره چکاپ صحبت کنید.':'عوامل خطر زیادی دارید. حتماً برای بررسی قلب به پزشک مراجعه کنید.'};
+chk.addEventListener('change',upd);upd();
+const stages=[['رگ سالم: دیواره صاف است و خون به‌راحتی جریان دارد.',0,0],['پلاک چربی در دیواره رگ جمع شده و مسیر خون تنگ‌تر شده است. این روند سال‌ها طول می‌کشد.',1,0],['پلاک ترک خورده و لخته خون روی آن، رگ را کاملاً بسته است. این همان لحظه سکته قلبی است.',1,1]];
+const art=document.getElementById('art'),cap=document.getElementById('cap');
+const drawA=s=>{const[t,p,c]=stages[s];const cells=Array.from({length:9},(_,i)=>{const x=30+i*42,y=100+(i%3-1)*14;const blocked=c&&x>210;return blocked?'':`<ellipse cx="${x}" cy="${y}" rx="11" ry="7" fill="#e02443"/>`}).join('');
+art.innerHTML=`<rect x="0" y="40" width="400" height="120" rx="20" fill="#f2a7b1"/><rect x="0" y="55" width="400" height="90" fill="#ffe3e7"/>${p?'<path d="M140 55 C180 55 190 92 230 92 C270 92 280 55 320 55Z M150 145 C190 145 200 112 230 112 C260 112 280 145 310 145Z" fill="#ffd36b"/>':''}${c?'<path d="M205 92 C220 80 245 85 250 100 C255 115 235 125 215 115 C200 108 196 98 205 92Z" fill="#7a0718"/>':''}${cells}<text x="380" y="30" font-family="Vazirmatn" font-size="14" text-anchor="end" fill="currentColor">جهت جریان خون ←</text>${p?'<text x="230" y="185" font-family="Vazirmatn" font-size="14" text-anchor="middle" fill="currentColor">'+(c?'لخته':'پلاک')+'</text>':''}`;cap.textContent=t;
+document.querySelectorAll('.stage button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s==s))};
+document.querySelector('.stage').addEventListener('click',e=>{const b=e.target.closest('button');if(b)drawA(+b.dataset.s)});drawA(0);
+const metro=document.getElementById('metro');let timer=null,ctx=null;
+metro.addEventListener('click',()=>{if(timer){clearInterval(timer);timer=null;metro.classList.remove('on');metro.textContent='شروع';metro.setAttribute('aria-pressed','false');return}
+try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)()}catch(e){}
+const tick=()=>{if(!ctx)return;try{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=880;g.gain.setValueAtTime(.2,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.08);o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+.09)}catch(e){}};
+tick();timer=setInterval(tick,545);metro.classList.add('on');metro.textContent='توقف';metro.setAttribute('aria-pressed','true')});
+const myths=[['سکته قلبی فقط برای افراد مسن است.','با اینکه خطر با افزایش سن بیشتر می‌شود، جوانان هم به‌خصوص با سیگار، چاقی و سابقه خانوادگی ممکن است دچار آن شوند. عادت‌های سالم باید از نوجوانی شروع شود.'],['اگر درد سینه نداشته باشم، سکته قلبی نیست.','بعضی افراد، به‌ویژه زنان و بیماران دیابتی، فقط تنگی نفس، تهوع یا خستگی شدید دارند.'],['سکته قلبی و ایست قلبی یکی هستند.','سکته قلبی مشکل «لوله‌کشی» است (رگ بسته می‌شود). ایست قلبی مشکل «برق» قلب است (قلب ناگهان از تپیدن می‌ایستد). سکته قلبی می‌تواند به ایست قلبی منجر شود.'],['بهتر است صبر کنم ببینم درد خودش خوب می‌شود یا نه.','صبر کردن خطرناک‌ترین کار است. هر دقیقه تأخیر، بخشی از عضله قلب را از بین می‌برد. فوراً تماس بگیرید.'],['کسی که ورزشکار است دچار سکته قلبی نمی‌شود.','ورزش خطر را خیلی کم می‌کند اما صفر نمی‌کند. ژنتیک، فشار خون و کلسترول هم نقش دارند.']];
+document.getElementById('myths').innerHTML=myths.map(m=>`<details><summary>${m[0]}</summary><p>${m[1]}</p></details>`).join('');
+const qs=[['اولین کار وقتی کسی علائم سکته قلبی دارد چیست؟',['به او آب بدهیم و صبر کنیم','فوراً با اورژانس تماس بگیریم','او را به پیاده‌روی ببریم'],1,'تماس سریع با اورژانس (۱۱۵) مهم‌ترین قدم است.'],['علت اصلی سکته قلبی چیست؟',['بسته شدن رگ‌های کرونری','ضعف عضلات دست','کمبود آب بدن'],0,'لخته روی پلاک، رگ کرونری را می‌بندد.'],['ریتم درست فشار قفسه سینه در احیا چقدر است؟',['۳۰ تا ۴۰ بار در دقیقه','۱۰۰ تا ۱۲۰ بار در دقیقه','۲۰۰ بار در دقیقه'],1,'۱۰۰ تا ۱۲۰ فشار در دقیقه؛ تقریباً هم‌ریتم آهنگ‌های تند.'],['کدام یک عامل خطر نیست؟',['سیگار کشیدن','فشار خون بالا','خوردن میوه و سبزی'],2,'میوه و سبزی به سلامت قلب کمک می‌کند.'],['کدام علامت می‌تواند نشانه سکته قلبی باشد؟',['درد پخش‌شده به بازو یا فک','خارش پوست','عطسه'],0,'درد ممکن است به بازو، گردن، فک یا پشت پخش شود.']];
+let qi=0,score=0;const qbox=document.getElementById('qbox');
+const showQ=()=>{if(qi>=qs.length){qbox.innerHTML=`<h3>امتیاز شما: ${fa(score)} از ${fa(qs.length)}</h3><p>${score===qs.length?'عالی! شما آماده‌اید که جان کسی را نجات دهید.':'خوب بود! بخش‌های بالا را دوباره مرور کنید.'}</p><button class="btn pri" id="again">دوباره</button>`;document.getElementById('again').onclick=()=>{qi=0;score=0;showQ()};return}
+const q=qs[qi];qbox.innerHTML=`<span style="color:var(--mute);font-size:14px">سؤال ${fa(qi+1)} از ${fa(qs.length)}</span><h3>${q[0]}</h3><div class="opts">${q[1].map((o,i)=>`<button data-i="${i}">${o}</button>`).join('')}</div><p class="fb" id="fb"></p>`;
+qbox.querySelector('.opts').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||qbox.dataset.lock)return;qbox.dataset.lock=1;const i=+b.dataset.i,ok=i===q[2];if(ok)score++;b.classList.add(ok?'ok':'no');qbox.querySelectorAll('.opts button')[q[2]].classList.add('ok');document.getElementById('fb').textContent=(ok?'درست است! ':'نه کاملاً. ')+q[3];setTimeout(()=>{delete qbox.dataset.lock;qi++;showQ()},2200)})};
+showQ();
+}
+</script>
+</body>
+</html>
