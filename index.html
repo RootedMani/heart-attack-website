@@ -99,6 +99,14 @@ footer{background:#1d0b0e;color:#e8cfd3;font-size:15px}
 footer a{color:#fff}
 footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px}
 @media(max-width:860px){.hero .wrap,.two,.risk,footer .wrap{grid-template-columns:minmax(0,1fr)}.meter{position:static}.fig{min-height:300px}}
+.by{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:#ffffff1f;border:1.5px solid #ffffff55;border-radius:18px;padding:10px 16px;margin:0 0 18px;backdrop-filter:blur(4px)}
+.by small{font-size:14px;color:#ffd5db;font-weight:500;width:100%}
+.by b{font-size:18px;font-weight:900;white-space:nowrap}
+.by i{font-style:normal;color:#ffd5db}
+.fby{margin-top:14px;padding-top:12px;border-top:1px solid #ffffff22;color:#fff}
+.call{flex-wrap:wrap}
+h1,h2,h3,p,summary,label{overflow-wrap:break-word}
+@media(max-width:600px){.band{padding:32px 16px}.hero h1{font-size:34px}.hero p{font-size:17px}.call{font-size:17px;padding:12px 16px;gap:10px}.call span{font-size:28px}.fig{min-height:0;max-width:360px;margin:0 auto}.stat{padding:16px}.card{padding:18px}.meter b{font-size:46px}.steps li{padding:14px;gap:12px}.cpr{padding:18px}.metro{width:104px;height:104px}details{padding:2px 14px}summary{align-items:flex-start;line-height:1.6}summary::before{margin-top:3px}.quiz{padding:18px}nav a{font-size:14px;padding:8px 10px}.by b{font-size:16px}h2{font-size:26px}h3{font-size:18px}footer .wrap{gap:18px}}
 @media(max-width:600px){.stats{grid-template-columns:minmax(0,1fr)}.cpr{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}.steps li{grid-template-columns:48px minmax(0,1fr)}.steps li::before{height:48px;font-size:26px}body{font-size:16px}}
 </style>
 </head>
@@ -110,6 +118,7 @@ footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);ga
 
 <header class="band hero"><div class="wrap">
 <div>
+<div class="by"><small>ارائه‌شده توسط:</small><b>یاسمن آژیر</b><i>و</i><b>مائده خبازکار</b></div>
 <h1>هر دقیقه برای قلب مهم است</h1>
 <p>سکته قلبی یعنی بخشی از عضله قلب به‌خاطر بسته شدن رگ، خون و اکسیژن کافی نمی‌گیرد. شناختن علائم و اقدام سریع می‌تواند جان یک نفر را نجات دهد.</p>
 <div class="call">☎<div>تماس فوری با اورژانس<small>ایران ۱۱۵ · اروپا ۱۱۲</small></div><span>115</span></div>
@@ -217,7 +226,7 @@ footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);ga
 </div></section>
 
 <footer class="band"><div class="wrap">
-<div><h3 style="color:#fff">قلب سالم</h3><p>این وب‌سایت برای یک پروژه آموزشی مدرسه ساخته شده و جایگزین مشاوره پزشکی نیست. در صورت بروز علائم، بلافاصله با اورژانس تماس بگیرید.</p></div>
+<div><h3 style="color:#fff">قلب سالم</h3><p>این وب‌سایت برای یک پروژه آموزشی مدرسه ساخته شده و جایگزین مشاوره پزشکی نیست. در صورت بروز علائم، بلافاصله با اورژانس تماس بگیرید.</p><p class="fby">ارائه‌شده توسط: <b>یاسمن آژیر</b> و <b>مائده خبازکار</b></p></div>
 <div><h3 style="color:#fff">منابع</h3>
 <a href="https://www.who.int/health-topics/cardiovascular-diseases">سازمان جهانی بهداشت (WHO)</a><br>
 <a href="https://www.heart.org/en/health-topics/heart-attack">انجمن قلب آمریکا (AHA)</a><br>
