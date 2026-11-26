@@ -99,6 +99,10 @@ footer{background:#1d0b0e;color:#e8cfd3;font-size:15px}
 footer a{color:#fff}
 footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px}
 @media(max-width:860px){.hero .wrap,.two,.risk,footer .wrap{grid-template-columns:minmax(0,1fr)}.meter{position:static}.fig{min-height:300px}}
+nav b,nav a{flex:none}
+nav .links{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;justify-content:flex-end}nav .links::-webkit-scrollbar{display:none}
+nav .wrap{overflow:visible}
+@media(max-width:860px){nav .wrap{flex-wrap:wrap;gap:4px;padding-top:10px;padding-bottom:6px}nav b{width:100%;font-size:18px}nav .links{width:100%;justify-content:flex-start;margin-inline:-6px}}
 .by{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:#ffffff1f;border:1.5px solid #ffffff55;border-radius:18px;padding:10px 16px;margin:0 0 18px;backdrop-filter:blur(4px)}
 .by small{font-size:14px;color:#ffd5db;font-weight:500;width:100%}
 .by b{font-size:18px;font-weight:900;white-space:nowrap}
@@ -113,7 +117,7 @@ h1,h2,h3,p,summary,label{overflow-wrap:break-word}
 <body>
 <nav aria-label="بخش‌ها"><div class="wrap">
 <b><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 21s-7.5-4.6-9.5-9.3C1 8 3.3 4.5 6.8 4.5c2 0 3.5 1.1 5.2 3 1.7-1.9 3.2-3 5.2-3 3.5 0 5.8 3.5 4.3 7.2C19.5 16.4 12 21 12 21z"/></svg>قلب سالم</b>
-<a href="#what">سکته چیست؟</a><a href="#signs">علائم</a><a href="#act">چه کنیم؟</a><a href="#risk">عوامل خطر</a><a href="#prevent">پیشگیری</a><a href="#myth">افسانه‌ها</a><a href="#quiz">آزمونک</a>
+<div class="links"><a href="#what">سکته چیست؟</a><a href="#signs">علائم</a><a href="#act">چه کنیم؟</a><a href="#risk">عوامل خطر</a><a href="#prevent">پیشگیری</a><a href="#myth">افسانه‌ها</a><a href="#quiz">آزمونک</a></div>
 </div></nav>
 
 <header class="band hero"><div class="wrap">
